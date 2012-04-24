@@ -1,0 +1,7 @@
+attribute vec3 position, couleur;
+uniform mat4 matrice_vue, matrice_projection, matrice_objet;
+varying vec3 vcouleur;
+void main(void) {
+    gl_Position = matrice_projection * matrice_vue * matrice_objet * vec4(position, 1.0);    
+    vcouleur = couleur;
+}

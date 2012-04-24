@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nouvelles technologies web frontend</title>
+	<base target=”_blank” />
+	<meta charset='utf-8'/>
+	<script src='slides.js'></script>
+</head>
+
+<body style='display: none'>
+	<style>
+	[data-markdown] em {
+		color		: orange;
+		font-style	: normal;
+		font-weight	: bolder;
+		
+	}
+	</style>
+	<section class='slides layout-regular template-default'>
+
+<!-- ****************************************************************************
+		Talk Introduction
+********************************************************************************* -->
+	<article data-markdown>
+		
+		# Technologies web frontend
+		
+		<!-- ## webgl, webrtc, webaudio, gamepad api, depthjs //-->
+		
+		Xavier Bourry
+	</article>
+	<article data-markdown>
+		
+
+		### Qui suis-je ?
+
+		* développeur Javascript, Webgl, HTML5, ...
+		* formateur à [JSInside](http://jsinside.com)
+		* fondateur de [Spacegoo](http://www.spacegoo.com)
+		
+		
+		#### Contacts
+		* [e-mail](xavier@jsinside.com)
+	</article>
+
+
+<!-- ****************************************************************************
+		1/ introduction
+********************************************************************************* -->
+	<article data-markdown>
+		<img style="float:right;" src='minitel.png' />
+		## Le web d'avant
+	</article>
+	<article data-markdown>
+		### Périphériques peu utilisés
+		* Jeux sommaires
+		* Applications natives préférées
+		
+		### Souvent via des plugins
+		
+		* problèmes de compatibilité
+		* ergonomie : nécessite une installation
+		* dépendance envers une technologie
+		* maintenance à long terme
+		
+	</article>
+	<article data-markdown>
+		<img style="float:right; width: 100%" src='base0.png' />
+	</article>
+
+	<article data-markdown>
+		<img style="float:right;" src='minority-report.jpg' />
+		## Le web du futur
+	</article>
+
+	<article data-markdown>
+		### Le navigateur n'est plus un simple afficheur de contenu
+		* Carte graphique : *Webgl*
+		* Webcam/audio : *Webrtc*
+		* Audio : *Webaudio*
+		* Gamepad : *Gamepad API*
+		* Kinect : *DepthJS*
+	</article>
+	<article data-markdown>
+		### Objectifs de la formation		
+		* nouvelles possibilités
+		* états d'avancement
+		* quickstarts
+		* synergies
+	</article>
+
+<!-- ****************************************************************************
+		1/ le webgl
+********************************************************************************* -->
+
+	<article data-markdown>
+		<img style="float:right;" src='webgl.jpg' />
+		## Partie 1 : *Le webgl*
+	</article>
+
+	<article data-markdown>
+		<img style="float:right; width: 100%" src='base2.png' />
+	</article>
+	<article data-markdown>
+		### OpenGL ES2.0 avec javascript
+		* Utilisation du GPU
+		* API à bas niveau
+		* Pas forcément 3D
+		
+
+		### Lié à l'élément CANVAS
+		
+		```
+		<canvas id='my_canvas' style='width: 800px; height: 600px'></canvas>
+		```
+ 
+
+		```
+		var my_canvas=document.getElementById('my_canvas'), GL;
+		try {
+		  GL=my_canvas.getContext("experimental-webgl", {antialias: true});
+		} catch(e) {
+		  alert("Vous n'êtes pas compatible webgl");
+		}
+		```
+		##### Les fonctions webgl sont accessibles par *GL.fonction(arguments...)* #####
+
+	</article>
+
+	<article data-markdown>
+	    ## Applications
+	</article>
+
+	<article data-markdown>
+	    ### Jeux
+	    <iframe style='width: 100%; height: 80%' src='http://www.spacegoo.com/flashMaze'></iframe>
+	</article>
+
+
+	<article data-markdown>
+	   ### Interfaces de navigation
+	   <iframe style='width: 100%; height: 80%' src='http://www.spacegoo.com/bubbles'></iframe>
+	</article>
+
+	<article data-markdown>
+	  ### Publicité et e-commerce
+	  <iframe style='width: 100%; height: 80%' src='http://proto.ultranoir.com/chair'></iframe>
+	</article>
+
+	<article data-markdown>
+	  ### Simulations
+	  <iframe style='width: 100%; height: 80%' src='http://www.spacegoo.com/solar_system'></iframe>
+	</article>
+
+	<article data-markdown>
+	  ### Les possibilités sont infinies
+	  * Webgl calcule rapidement la couleur de pixels sur l'écran
+	  * Le cadre rigide du DOM n'existe plus
+	  
+	  #### Tout est possible ! ####
+
+	  Liens webgl :
+	  [chromeexperiments.com](http://www.chromeexperiments.com)
+	  [3dsitelinks.com](http://www.3dsitelinks.com)
+	  [learningwebgl.com](http://www[learningwebgl.com)
+	</article>
+
+	<article data-markdown>
+	   ###Intégration du webgl dans la page web###
+	    * widget
+	    * arrière plan
+	    * partie d'une application
+	    * application full 3D
+	</article>  
+
+	<article data-markdown>
+	      ## Le développement en webgl
+	</article>	
+
+	<article data-markdown>
+
+	</article>
+
+	<article data-markdown>
+		### Développement en webgl pur
+		* Connaissances mathématiques
+		##### calcul matriciel, trigonométrie dans l'espace, ... #####
+		* Nécessite des connaissances en API 3D
+		##### les shaders, les buffers, les algorithmes d'ombrage, d'éclairage, ... #####
+		* L'apprentissage est long ...
+
+	</article>
+	<article data-markdown>
+		### Exemple : un rotating cube ###
+		<iframe style='width: 640px; height: 480px; overflow: hidden' src='cube/cube.html'></iframe>
+	</article>
+	<article data-markdown>
+		### Exemple : un rotating cube ###
+		<iframe style='width: 100%; height: 80%; overflow-x: hidden; overflow-y: scroll;' src='cube/code.html'></iframe>
+	</article>
+	<article data-markdown>
+		## Solution : utiliser des frameworks
+	</article>
+	<article data-markdown>
+		### Les frameworks sont souvent orientés (jeux, simulations, ...) ###
+		#### Principaux frameworks : 
+		* [Three.js](http://threejs.org)
+		* [GLGE](http://www.glge.org)
+		* [Copperlicht](http://www.ambiera.com/copperlicht/)
+		* [SceneJS](http://scenejs.org/)
+		* [SpiderGL](http://spidergl.org/)
+		* [C3DL](http://www.c3dl.org/)
+		* ...
+	</article>
+	<article data-markdown>
+	      ### Exemple : le rotating cube avec three.js
+	      <iframe style='width: 100%; height: 80%px; overflow: hidden'  src='http://learningthreejs.com/data/lets_do_a_cube/lets_do_a_cube.html'></iframe>
+	</article>
+
+
+	<article data-markdown>
+	      ### Exemple : le rotating cube avec three.js
+	      <iframe style='width: 100%; height: 80%px; overflow-x: hidden; overflow-y: auto;'  src='cubethreejs/code.html'></iframe>
+	</article>
+
+
+	
+	<article data-markdown>
+		# Voilà
+		
+		### Questions ?
+	</article>
+
+	<script>
+	// ==UserScript==
+	// @name Use Markdown, sometimes, in your HTML.
+	// @author Paul Irish <http://paulirish.com/>
+	// @link http://git.io/data-markdown
+	// @match *
+	// ==/UserScript==
+	
+	
+	// If you're not using this as a userscript just delete from this line up. It's cool, homey.
+	
+	(function markdownSlideToHtml(){
+	  
+		if (!window.Showdown){
+			var scr		= document.createElement('script');
+			scr.onload	= markdownSlideToHtml;
+			scr.src		= 'https://raw.github.com/github/github-flavored-markdown/gh-pages/scripts/showdown.js';
+			document.body.appendChild(scr);
+			return;
+		}
+	
+		[].forEach.call(document.querySelectorAll('[data-markdown]'), function fn(elem){
+			// strip leading whitespace so it isn't evaluated as code
+			//var text      = elem.textContent.replace(/\n\s*\n/g,'\n');
+			// jerome- to have better support of html within markdown
+			var text      = elem.innerHTML;
+			//console.log("origin innerHTML", text.split('\n'));
+			// remove all blanks lines
+			//text		= text.replace(/\n\s*\n/g,'\n');
+			//console.log("step text", text)
+			// set indentation level so your markdown can be indented within your HTML
+			var matches	= text.match(/^\n([ \t]*)/);
+			var leadingws	= matches[1].length;
+			//console.log("first line", matches)
+			//console.log("leadingws", leadingws)
+			var regex	= new RegExp('\\n[ \\t]{' + leadingws + '}','g');
+			var md		= text.replace(regex,'\n');
+			console.log("pre md", md);
+			html      = (new Showdown.converter()).makeHtml(md);
+			console.log("post html", html);
+	
+			// to support prettyprint
+			html		= html.replace(/<code><br \/>/g,'<pre class="prettyprint">');
+			html		= html.replace(/<br \/><\/code>/g,'</pre>');
+			// unescape [><]
+			html		= html.replace(/&amp;gt;/g,'>');
+			html		= html.replace(/&amp;lt;/g,'<');
+			//console.log("escaped html", html);
+		  
+			// here, have sum HTML
+			elem.innerHTML = html;
+		});
+		// callback prettyprint to highlight code found in markdown
+		prettyPrint();
+	}());
+
+//* http://jsclassroom.com
+//* http://jscoaches.com
+//* http://html5coaches.com
+//* http://jsuni.com
+//* http://javascriptuni.com
+//
+//prefix: js html5 javascript
+//
+//suffix: school classroom univesity academy class education 
+//
+//
+//* https://github.com/hakimel/reveal.js/issues/15 reveal.js in markdown
+//  * do the same for html5slide
+//  * standalone, no compilation, no need to commit all to markdown
+//* https://github.com/vinyll/html5-slides-markdown does well but not proper target
+//  * nice on how to make slides in markdown tho
+	</script> 
+</body>
+</html>
