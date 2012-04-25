@@ -56,6 +56,7 @@
 		* Jeux sommaires
 		* Applications natives préférées
 		
+		<br />
 		### Souvent via des plugins
 		
 		* problèmes de compatibilité
@@ -133,13 +134,18 @@
 
 	<article data-markdown>
 	    ### Jeux
-	    <iframe style='width: 100%; height: 80%' src='http://www.spacegoo.com/flashMaze'></iframe>
-	</article>
+	    [Démo de jeu de carte](http://www.spacegoo.com/cards2)
+	    [Graffiti space](http://www.spacegoo.com/cadillac)
+	    [Pacmaze](http://www.pacmaze.com)
+	    [Labyrinthe](http://www.spacegoo.com/maze)
+	    [Jeu d'hélicoptère](http://www.spacegoo.com/helico)
+  	</article>
 
 
 	<article data-markdown>
 	   ### Interfaces de navigation
-	   <iframe style='width: 100%; height: 80%' src='http://www.spacegoo.com/bubbles'></iframe>
+	   [Paris bubbles](http://www.spacegoo.com/bubbles)
+	   [Arrière plan de feu](http://jetienne.com/index-webgl.html)
 	</article>
 
 	<article data-markdown>
@@ -149,7 +155,8 @@
 
 	<article data-markdown>
 	  ### Simulations
-	  <iframe style='width: 100%; height: 80%' src='http://www.spacegoo.com/solar_system'></iframe>
+	  [Système solaire](http://www.spacegoo.com/solar_system)
+	  
 	</article>
 
 	<article data-markdown>
@@ -213,23 +220,225 @@
 		* ...
 	</article>
 	<article data-markdown>
-	      ### Exemple : le rotating cube avec three.js
+	      ### Exemple : le rotating cube avec three.js ###
 	      <iframe style='width: 100%; height: 80%px; overflow: hidden'  src='http://learningthreejs.com/data/lets_do_a_cube/lets_do_a_cube.html'></iframe>
 	</article>
 
 
 	<article data-markdown>
-	      ### Exemple : le rotating cube avec three.js
+	      ### Exemple : le rotating cube avec three.js ###
 	      <iframe style='width: 100%; height: 80%px; overflow-x: hidden; overflow-y: auto;'  src='cubethreejs/code.html'></iframe>
 	</article>
 
-
+	<article data-markdown>
+	  ### Quickstart webgl
+	  * Commencer avec un framework
+	  * Apprendre le GLSL
+	  * Apprendre les bases du modelage 3D
+	</article>
 	
 	<article data-markdown>
-		# Voilà
+	    ### Le *GLSL*
+	    * Graphic Library Shader Language
+	    * Exécuté sur la carte graphique à 2 endroits
+	    * Syntaxe proche du C
+	    * Pour apprendre : la [GLSL Sandbox](http://glsl.heroku.com/e#2280.0)
+	</article>
+
+	<article data-markdown>
+	## Compatibilité et concurrents
+	</article>
+
+	<article data-markdown>
+	### Compatibilité
+	* Navigateur : Chrome (>9), Opera (>12), Safari (>5.1), Firefox (>4). Pas IE !
+	* Pilotes graphiques à jour
+	* Smartphone et tablettes : Androïd, RIM, iOS dans iAd
+	</article>
+
+	<article data-markdown>
+	### Concurrents
+	* [Unity3D](http://unity3d.com/)
+	* [Flash Stage3D](http://www.adobe.com/devnet/flashplayer/stage3d.html)
+	* [JOGL](http://jogamp.org/)
+	* Autres plugins 3D propriétaires...
+	</article>
+
+	<article data-markdown>
+		# Voilà pour webgl
 		
 		### Questions ?
 	</article>
+
+<!-- ****************************************************************************
+		2/ webrtc
+********************************************************************************* -->
+	<article data-markdown>
+	  <img src='webrtc.png' style='float: right'/>
+	  ##webrtc
+	</article>
+  
+	<article data-markdown>
+	  <img style="width: 100%" src='base3.png'/>
+	</article>
+
+
+	<article data-markdown>
+	  ### Principe
+	  * Récupération de l'image webcam dans l'élément *&lt;VIDEO&gt;* d'HTML5
+	  * Communication P2P 3 cannaux : vidéo, audio, données
+	  * Nécessite un serveur STUN
+	  * Technologie standard  
+	  <br />
+
+	### Avant
+	  * Applications natives (skype, aim, ...)
+	  * Plugins (flash, Google Hangout, ...)
+	</article>
+
+	<article data-markdown>
+	  ### Applications
+	  * Visioconférence
+	  * Hotlines
+	  * Sites sociaux : tchats, rencontres, ...
+
+	  #### Démocratise et intègre la visio ####
+
+	  [Demo](http://code.google.com/p/webrtc-samples/source/browse/trunk/apprtc/) - nécessite [Chrome Canary](http://tools.google.com/dlpage/chromesxs)
+	</article>
+
+	<article data-markdown>
+	  ### Utilisation combinée avec webgl
+	    * Webgl : traite le flux vidéo en temps réel
+	    * Traitement de l'image : masquage partiel, effets valorisants, ...
+	    * Utilisation dans une scène 3D
+
+	    #### Démonstrations ####
+	    * [2 TV visio](http://learningthreejs.com/data/live-video-in-webgl)
+	    * [Jeu d'échecs](http://192.168.1.33/chess)
+
+	</article>
+	<article data-markdown>
+	  ### Réalité augmentée
+	  #### C'est maintenant possible ! ####
+	  * Webrtc : récupère l'image Webcam
+	  * Webgl : analyse l'image, rajoute des objets 3D et affiche le rendu
+	  * Reconnaissance par couleur ou par forme (QRcode like)
+	  * Un plugin existe pour Three.js : JSARToolKit
+	  
+	  [démonstration](http://jeromeetienne.github.com/tquery.jsartoolkit/)
+	</article>
+
+	<article data-markdown>
+	  <img style='float: right' src='think.jpg'/>
+	  ### Réflexions
+	  #### Utilisation combinée de webgl/webrtc ####
+	  * E-commerce vestimentaire
+	  * Publicité
+	  * Jeux en ligne
+	  * Montage vidéo
+	</article>    
+
+	<article data-markdown>
+	  ## Idées...	  
+	  <img style='float: right' src='ampoule.jpg'/>
+	</article>
+	
+	<article data-markdown>
+	  ### E-commerce vestimentaire
+	  * Essayage virtuel
+	  * Essayage sur personnages virtuels
+	  * Magasin virtuel 3D avec vrais vendeurs
+	  * Haut de gamme : Vêtements personnalisés (couleurs, textures)
+	  * Sur mesure
+	</article>
+
+	<article data-markdown>
+	  ### Publicité
+	  * marqueur sur le produit
+	  * clip faisant intervenir l'internaute
+	  * jeu en RA avec le produit
+	</article>
+	  
+	<article data-markdown>
+	  ### Jeux en ligne
+	  * Jeux d'adresse avec la RA
+	  * Jeux sociaux (cartes, échecs, ...)
+	  * Jeux d'arcade
+	</article>
+
+	<article data-markdown>
+	  ### Montage vidéo
+	  * Mise en scène partielle (flou, contraste)
+	  * Améliorations (luminosité, couleurs)
+	  * Effets spéciaux
+	  * Mise en scène 3D
+	  * Effets de transition
+	  * Présentations vidéos par mixage webcam/images/texte
+	</article>
+
+	<article data-markdown>
+	  ### Développement avec webrtc
+      
+	</article>
+
+	<article data-markdown>
+	    ### Compatibilité
+	    * Chrome
+	    * Firefox
+	    * Internet Explorer
+
+	    <br />    
+
+	    ### Disponible mais pas encore mature
+	    * Draft non finalisé
+	    * Prêt pour 2013
+	</article>
+
+	<article data-markdown>
+		# Voilà pour webrtc
+		
+		### Questions ?
+	</article>
+	
+
+
+<!-- ****************************************************************************
+		3/ webaudio
+********************************************************************************* -->
+	<article data-markdown>
+	  ##Webaudio
+	</article>
+  
+	<article data-markdown>
+	  <img style="width: 100%" src='base4.png'/>
+	</article>
+
+
+<!-- ****************************************************************************
+		4/ gamepad API
+********************************************************************************* -->
+	<article data-markdown>
+	    ##Gamepad API
+	</article>
+  
+	<article data-markdown>
+	  <img style="width: 100%" src='base5.png'/>
+	</article>
+
+
+<!-- ****************************************************************************
+		5/ DepthJS
+********************************************************************************* -->
+	<article data-markdown>
+	    ##DepthJS
+	</article>
+  
+	<article data-markdown>
+	  <img style="width: 100%" src='base.png'/>
+	</article>
+
+
 
 	<script>
 	// ==UserScript==
