@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type='text/javascript'>
+  var get_webcam=function() {
+    var got_stream=function(stream) {
+      video.src = webkitURL.createObjectURL(stream);
+    }
+    var no_stream=function() {
+      alert("Erreur");
+    }
+    var video=document.getElementById("ma_video");
+    navigator.webkitGetUserMedia('video', got_stream, no_stream);
+    
+    
+  }
+
+</script>
+</head>
+<body onload='get_webcam()'>
+<video id="ma_video" height='600' width='600' autoplay></video>
+</body>
+</html>
+
+
+ 

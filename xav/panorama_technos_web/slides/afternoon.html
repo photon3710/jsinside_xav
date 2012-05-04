@@ -378,9 +378,37 @@
 	</article>
 
 	<article data-markdown>
-	  ### Développement avec webrtc
-      
+	  ## Développement avec webrtc
 	</article>
+
+	<article data-markdown>
+	  ### Récupérer l'image webcam
+&lt;video id="ma_video" height='600' width='600' autoplay&gt;
+	    
+	  ```
+var get_webcam=function() {
+  var got_stream=function(stream) {
+    video.src = webkitURL.createObjectURL(stream);
+  }
+  var no_stream=function() {
+    alert("Erreur");
+  }
+  var video=document.getElementById("ma_video");
+  navigator.webkitGetUserMedia('video', got_stream, no_stream);
+}
+	```
+#### C'est réellement simple ! ####
+	</article>
+
+	<article data-markdown>
+	  ### Envoyer l'image webcam
+	  * C'est plus compliqué
+	  * Gestion des parties, des problèmes réseau...
+	  * Quickstart : S'inspirer des démos de webrtc.org
+	  * Des librairies viendront !
+	</article>
+
+    
 
 	<article data-markdown>
 	    ### Compatibilité
@@ -410,10 +438,96 @@
 	  ##Webaudio
 	</article>
   
+
 	<article data-markdown>
 	  <img style="width: 100%" src='base4.png'/>
 	</article>
 
+	<article data-markdown>
+	### L'élément AUDIO d'HTML5
+	* Simple d'utilisation
+	* Contrôle du volume, arrêt/pause
+	* Il manque des fonctions de synchronisation
+	* Mixage, Filtrage, autres traitements absents
+
+	#### solution : webaudio API ####
+	</article>
+
+	<article data-markdown>
+	### Webaudio API
+	* basé sur OpenAL
+	* créé pour les jeux
+	* l'élément AUDIO peut servir de source
+
+	Création du contexte :
+	```
+	var context = new webkitAudioContext();
+	```
+	</article>
+
+
+	<article data-markdown>
+	## Principe
+	</article>
+
+	<article data-markdown>
+	### Traitement audio
+	* Des sources
+	* Une route passant par des noeuds
+	* Une destination
+	<img src='webaudio0.png'/>
+	</article>
+
+	<article data-markdown>
+	### Les noeuds
+	* Contituent les routes
+	* Filtres, volume, 
+	* La route dépend de l'utilisation
+	* Utiliser une route type
+	</article>
+
+	<article data-markdown>
+	 <img src='webaudio1.png' />
+	</article>
+
+	<article data-markdown>
+	### Applications
+	* Réalisme sonore dans les jeux/applications interactives
+	* Musique en ligne : visualiseurs 
+	* Synthétiseurs en applications web
+	</article>
+
+	<article data-markdown>
+	### Synergies
+	#### Avec webgl : ajoute au son ce que webgl ajoute au graphisme ###
+	  * Son 3D
+	  * Effets : doppler, panning, ...
+
+	#### Avec webrtc : traitement sonore ###
+	</article>
+
+	<article data-markdown>
+	### Quickstart
+	* Moins complexe que webgl
+	* Une librairie existe pour three.js : tQuery webaudio
+
+	 [Démonstration tQuery](http://bit.ly/GApgWg)
+	</article>
+
+	<article data-markdown>
+	### Compatibilité
+	* Chrome
+	* Safari nighties
+	* Firefox : Audio data API
+	* Internet Explorer 10
+	</article>
+
+	<article data-markdown>
+		# Voilà pour webaudio
+		
+		### Questions ?
+	</article>
+	
 
 <!-- ****************************************************************************
 		4/ gamepad API
@@ -425,6 +539,89 @@
 	<article data-markdown>
 	  <img style="width: 100%" src='base5.png'/>
 	</article>
+
+	<article data-markdown>
+	  ### Présentation ###
+	  * Pour les jeux
+	  * Mais pas que pour les jeux !
+	  * Les simulateurs
+	  * La commande à distance
+
+	  #### En général : Navigation 3D plus intuitive
+	  <img src='F16_cockpit.jpg' />
+	</article>	
+
+	<article data-markdown>
+	### Au niveau technique
+	Nouveaux évènements javascript
+
+	```
+function connect_gamepad(e) {
+    alert("gamepad connectée :)");
+}
+window.addEventListener("MozGamepadConnected",
+	  gamepadConnected, false);
+	```
+
+déconnection : ```MozGamepadDisconnected```
+	</article>
+    
+	<article data-markdown>
+	### Les boutons
+
+	```
+function button_handler(event, pressed) {
+    var gamepadId = event.gamepad.id,
+    bouton = event.button,
+    alert("gamepad : "+gamepadId+" ; bouton : "+bouton
+      +" ; pressé: "+pressed);
+}
+	```
+	```
+window.addEventListener("MozGamepadButtonDown",
+	  function(e) { button_handler(e, true); }, false);
+window.addEventListener("MozGamepadButtonUp",
+	  function(e) { button_handler(e, false); }, false);
+	```
+
+    </article>
+
+	<article data-markdown>
+	### Les axes
+
+	```
+function axis_handler(event, pressed) {
+  var gamepadId = event.gamepad.id,
+    axis = event.axis,
+    value = event.value;
+    alert("gamepad : "+gamepadId+" ; axe : "+axis+" ; valeur : "+value);
+}
+	```
+	```
+window.addEventListener("MozGamepadAxisMove", axis_handler, false);
+	```
+      </article>
+
+      <article data-markdown>
+      ### C'est très simple !
+      #### En quelques heure rajoutez le support gamepad à vos jeux ####
+      </article>
+
+	<article data-markdown>
+	### Compatibilité
+	* Firefox
+	* Chrome
+	* Safari
+	* Opera
+	* Internet Explorer ?
+	</article>
+
+	<article data-markdown>
+		# Voilà pour gamepad API
+		
+		### Questions ?
+	</article>
+	
 
 
 <!-- ****************************************************************************
@@ -438,9 +635,106 @@
 	  <img style="width: 100%" src='base.png'/>
 	</article>
 
+	<article data-markdown>
+	###Présentation
+	* C'est la seule qui nécessite un plugin
+	* Pour des applications spécifiques (vitrines, publicité)
+	* Nécessite une ergonomie très particulière
+	<img style='float: right'  src='minority-report.jpg'/>
+	</article>
+
+
+	<article data-markdown>
+	### Applications
+	* Peu pour le web "grand public"
+	* Bornes interactives
+	* Publicité
+	* Vitrines
+	* Applications spécifiques
+	</article>
+
+	<article data-markdown>
+	### Au niveau technique
+
+	#### N'utilise pas les events
+	```
+    DepthJS = {
+      onKinectInit: function() { },
+      onRegister: function(x, y, z, data) { },
+      onUnregister: function() { },
+      onMove: function(x, y, z) { },
+      onSwipeLeft: function() { },
+      onSwipeRight: function() { },
+      onSwipeDown: function() { },
+      onSwipeUp: function() { },
+      onPush: function() { },
+      onPull: function() { }
+    };
+	```
+	</article>
+
+	<article data-markdown>
+	### Compatibilité
+	* Chrome
+	* Firefox
+	* Safari
+	</article>
+
+
+	<article data-markdown>
+		# Voilà pour depthJS
+		
+		### Questions ?
+	</article>
+	
+<!-- ****************************************************************************
+		6/ Autres technologies
+********************************************************************************* -->
+	<article data-markdown>
+	    ##Autres nouveautés
+	    #### But : tout développer en application web
+	</article>
+
+	<article data-markdown>
+	 ### Mouse lock
+ 	<img src='mouselock.jpg' style='width: 100%; margin-left: auto; margin-right: auto'/>
+	</article>
+
+	<article data-markdown>
+	###Localstorage	
+  * Remplace les cookies
+  * Permet de stocker de grosses quantités de données
+  * Déjà prêt !
+<img src='hdd.jpg' style='float: right'/>
+``` localStorage['maCle']=valeur ```
+	</article>
+
+	<article data-markdown>
+	 ### CSS
+ 	* filtres
+ 	* Effets 3D
+ 	* Mais limités
+ 	* CSS shaders
+	</article>
+
+	<article data-markdown>
+	### Websockets
+	* Communication en temps réel avec le serveur
+	* Plus mature que webrtc
+	* Nécessite un serveur compatible
+	* Applications : jeux, remplacement d'AJAX
+	</article>
+
+	<article data-markdown>
+	# Voilà pour les présentations
+	#### Beaucoup de possibilités ... ####
+	#### Comment les utiliser dans le cadre de projets complets ? ####
+	#### Let's think ... ####
+	</article>
 
 
 	<script>
+
 	// ==UserScript==
 	// @name Use Markdown, sometimes, in your HTML.
 	// @author Paul Irish <http://paulirish.com/>

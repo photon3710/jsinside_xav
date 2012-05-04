@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nouvelles technologies web frontend</title>
+	<base target=”_blank” />
+	<meta charset='utf-8'/>
+	<script src='slides.js'></script>
+</head>
+
+<body style='display: none'>
+	<style>
+	[data-markdown] em {
+		color		: orange;
+		font-style	: normal;
+		font-weight	: bolder;
+		
+	}
+	</style>
+	<section class='slides layout-regular template-default'>
+
+<!-- ****************************************************************************
+		Talk Introduction
+********************************************************************************* -->
+	<article data-markdown>
+		
+		# Technologies web frontend
+		
+		<!-- ## webgl, webrtc, webaudio, gamepad api, depthjs //-->
+		
+		Xavier Bourry
+	</article>
+	<article data-markdown>
+		
+
+		### Qui suis-je ?
+
+		* développeur Javascript, Webgl, HTML5, ...
+		* formateur à [JSInside](http://jsinside.com)
+		* fondateur de [Spacegoo](http://www.spacegoo.com)
+		
+		
+		#### Contacts
+		* [e-mail](xavier@jsinside.com)
+	</article>
+
+
+<!-- ****************************************************************************
+		1/ introduction
+********************************************************************************* -->
+	<article data-markdown>
+		<img style="float:right;" src='minitel.png' />
+		## Le web d'avant
+	</article>
+	<article data-markdown>
+		### Périphériques peu utilisés
+		* Jeux sommaires
+		* Applications natives préférées
+		
+		<br />
+		### Souvent via des plugins
+		
+		* problèmes de compatibilité
+		* ergonomie : nécessite une installation
+		* dépendance envers une technologie
+		* maintenance à long terme
+		
+	</article>
+	<article data-markdown>
+		<img style="float:right; width: 100%" src='base0.png' />
+	</article>
+
+	<article data-markdown>
+		<img style="float:right;" src='minority-report.jpg' />
+		## Le web du futur
+	</article>
+
+	<article data-markdown>
+		### Le navigateur n'est plus un simple afficheur de contenu
+		* Carte graphique : *Webgl*
+		* Webcam/audio : *Webrtc*
+		* Audio : *Webaudio*
+		* Gamepad : *Gamepad API*
+		* Kinect : *DepthJS*
+	</article>
+	<article data-markdown>
+		### Objectifs de la formation		
+		* nouvelles possibilités
+		* états d'avancement
+		* quickstarts
+		* synergies
+	</article>
+
+<!-- ****************************************************************************
+		1/ le webgl
+********************************************************************************* -->
+
+	<article data-markdown>
+		<img style="float:right;" src='webgl.jpg' />
+		## Partie 1 : *Le webgl*
+	</article>
+
+	<article data-markdown>
+		<img style="float:right; width: 100%" src='base2.png' />
+	</article>
+	<article data-markdown>
+		### OpenGL ES2.0 avec javascript
+		* Utilisation du GPU
+		* API à bas niveau
+		* Pas forcément 3D
+		
+
+		### Lié à l'élément CANVAS
+		
+		```
+		<canvas id='my_canvas' style='width: 800px; height: 600px'></canvas>
+		```
+ 
+
+		```
+		var my_canvas=document.getElementById('my_canvas'), GL;
+		try {
+		  GL=my_canvas.getContext("experimental-webgl", {antialias: true});
+		} catch(e) {
+		  alert("Vous n'êtes pas compatible webgl");
+		}
+		```
+		##### Les fonctions webgl sont accessibles par *GL.fonction(arguments...)* #####
+
+	</article>
+
+	<article data-markdown>
+	    ## Applications
+	</article>
+
+	<article data-markdown>
+	    ### Jeux
+	    [Démo de jeu de carte](http://www.spacegoo.com/cards2)
+	    [Graffiti space](http://www.spacegoo.com/cadillac)
+	    [Pacmaze](http://www.pacmaze.com)
+	    [Labyrinthe](http://www.spacegoo.com/maze)
+	    [Jeu d'hélicoptère](http://www.spacegoo.com/helico)
+  	</article>
+
+
+	<article data-markdown>
+	   ### Interfaces de navigation
+	   [Paris bubbles](http://www.spacegoo.com/bubbles)
+	   [Arrière plan de feu](http://jetienne.com/index-webgl.html)
+	</article>
+
+	<article data-markdown>
+	  ### Publicité et e-commerce
+	  <iframe style='width: 100%; height: 80%' src='http://proto.ultranoir.com/chair'></iframe>
+	</article>
+
+	<article data-markdown>
+	  ### Simulations
+	  [Système solaire](http://www.spacegoo.com/solar_system)
+	  
+	</article>
+
+	<article data-markdown>
+	  ### Les possibilités sont infinies
+	  * Webgl calcule rapidement la couleur de pixels sur l'écran
+	  * Le cadre rigide du DOM n'existe plus
+	  
+	  #### Tout est possible ! ####
+
+	  Liens webgl :
+	  [chromeexperiments.com](http://www.chromeexperiments.com)
+	  [3dsitelinks.com](http://www.3dsitelinks.com)
+	  [learningwebgl.com](http://www[learningwebgl.com)
+	</article>
+
+	<article data-markdown>
+	   ###Intégration du webgl dans la page web###
+	    * widget
+	    * arrière plan
+	    * partie d'une application
+	    * application full 3D
+	</article>  
+
+	<article data-markdown>
+	      ## Le développement en webgl
+	</article>	
+
+	<article data-markdown>
+
+	</article>
+
+	<article data-markdown>
+		### Développement en webgl pur
+		* Connaissances mathématiques
+		##### calcul matriciel, trigonométrie dans l'espace, ... #####
+		* Nécessite des connaissances en API 3D
+		##### les shaders, les buffers, les algorithmes d'ombrage, d'éclairage, ... #####
+		* L'apprentissage est long ...
+
+	</article>
+	<article data-markdown>
+		### Exemple : un rotating cube ###
+		<iframe style='width: 640px; height: 480px; overflow: hidden' src='cube/cube.html'></iframe>
+	</article>
+	<article data-markdown>
+		### Exemple : un rotating cube ###
+		<iframe style='width: 100%; height: 80%; overflow-x: hidden; overflow-y: scroll;' src='cube/code.html'></iframe>
+	</article>
+	<article data-markdown>
+		## Solution : utiliser des frameworks
+	</article>
+	<article data-markdown>
+		### Les frameworks sont souvent orientés (jeux, simulations, ...) ###
+		#### Principaux frameworks : 
+		* [Three.js](http://threejs.org)
+		* [GLGE](http://www.glge.org)
+		* [Copperlicht](http://www.ambiera.com/copperlicht/)
+		* [SceneJS](http://scenejs.org/)
+		* [SpiderGL](http://spidergl.org/)
+		* [C3DL](http://www.c3dl.org/)
+		* ...
+	</article>
+	<article data-markdown>
+	      ### Exemple : le rotating cube avec three.js ###
+	      <iframe style='width: 100%; height: 80%px; overflow: hidden'  src='http://learningthreejs.com/data/lets_do_a_cube/lets_do_a_cube.html'></iframe>
+	</article>
+
+
+	<article data-markdown>
+	      ### Exemple : le rotating cube avec three.js ###
+	      <iframe style='width: 100%; height: 80%px; overflow-x: hidden; overflow-y: auto;'  src='cubethreejs/code.html'></iframe>
+	</article>
+
+	<article data-markdown>
+	  ### Quickstart webgl
+	  * Commencer avec un framework
+	  * Apprendre le GLSL
+	  * Apprendre les bases du modelage 3D
+	</article>
+	
+	<article data-markdown>
+	    ### Le *GLSL*
+	    * Graphic Library Shader Language
+	    * Exécuté sur la carte graphique à 2 endroits
+	    * Syntaxe proche du C
+	    * Pour apprendre : la [GLSL Sandbox](http://glsl.heroku.com/e#2280.0)
+	</article>
+
+	<article data-markdown>
+	## Compatibilité et concurrents
+	</article>
+
+	<article data-markdown>
+	### Compatibilité
+	* Navigateur : Chrome (>9), Opera (>12), Safari (>5.1), Firefox (>4). Pas IE !
+	* Pilotes graphiques à jour
+	* Smartphone et tablettes : Androïd, RIM, iOS dans iAd
+	</article>
+
+	<article data-markdown>
+	### Concurrents
+	* [Unity3D](http://unity3d.com/)
+	* [Flash Stage3D](http://www.adobe.com/devnet/flashplayer/stage3d.html)
+	* [JOGL](http://jogamp.org/)
+	* Autres plugins 3D propriétaires...
+	</article>
+
+	<article data-markdown>
+		# Voilà pour webgl
+		
+		### Questions ?
+	</article>
+
+<!-- ****************************************************************************
+		2/ webrtc
+********************************************************************************* -->
+	<article data-markdown>
+	  <img src='webrtc.png' style='float: right'/>
+	  ##webrtc
+	</article>
+  
+	<article data-markdown>
+	  <img style="width: 100%" src='base3.png'/>
+	</article>
+
+
+	<article data-markdown>
+	  ### Principe
+	  * Récupération de l'image webcam dans l'élément *&lt;VIDEO&gt;* d'HTML5
+	  * Communication P2P 3 cannaux : vidéo, audio, données
+	  * Nécessite un serveur STUN
+	  * Technologie standard  
+	  <br />
+
+	### Avant
+	  * Applications natives (skype, aim, ...)
+	  * Plugins (flash, Google Hangout, ...)
+	</article>
+
+	<article data-markdown>
+	  ### Applications
+	  * Visioconférence
+	  * Hotlines
+	  * Sites sociaux : tchats, rencontres, ...
+
+	  #### Démocratise et intègre la visio ####
+
+	  [Demo](http://code.google.com/p/webrtc-samples/source/browse/trunk/apprtc/) - nécessite [Chrome Canary](http://tools.google.com/dlpage/chromesxs)
+	</article>
+
+	<article data-markdown>
+	  ### Utilisation combinée avec webgl
+	    * Webgl : traite le flux vidéo en temps réel
+	    * Traitement de l'image : masquage partiel, effets valorisants, ...
+	    * Utilisation dans une scène 3D
+
+	    #### Démonstrations ####
+	    * [2 TV visio](http://learningthreejs.com/data/live-video-in-webgl)
+	    * [Jeu d'échecs](http://192.168.1.33/chess)
+
+	</article>
+	<article data-markdown>
+	  ### Réalité augmentée
+	  #### C'est maintenant possible ! ####
+	  * Webrtc : récupère l'image Webcam
+	  * Webgl : analyse l'image, rajoute des objets 3D et affiche le rendu
+	  * Reconnaissance par couleur ou par forme (QRcode like)
+	  * Un plugin existe pour Three.js : JSARToolKit
+	  
+	  [démonstration](http://jeromeetienne.github.com/tquery.jsartoolkit/)
+	</article>
+
+	<article data-markdown>
+	  <img style='float: right' src='think.jpg'/>
+	  ### Réflexions
+	  #### Utilisation combinée de webgl/webrtc ####
+	  * E-commerce vestimentaire
+	  * Publicité
+	  * Jeux en ligne
+	  * Montage vidéo
+	</article>    
+
+	<article data-markdown>
+	  ## Idées...	  
+	  <img style='float: right' src='ampoule.jpg'/>
+	</article>
+	
+	<article data-markdown>
+	  ### E-commerce vestimentaire
+	  * Essayage virtuel
+	  * Essayage sur personnages virtuels
+	  * Magasin virtuel 3D avec vrais vendeurs
+	  * Haut de gamme : Vêtements personnalisés (couleurs, textures)
+	  * Sur mesure
+	</article>
+
+	<article data-markdown>
+	  ### Publicité
+	  * marqueur sur le produit
+	  * clip faisant intervenir l'internaute
+	  * jeu en RA avec le produit
+	</article>
+	  
+	<article data-markdown>
+	  ### Jeux en ligne
+	  * Jeux d'adresse avec la RA
+	  * Jeux sociaux (cartes, échecs, ...)
+	  * Jeux d'arcade
+	</article>
+
+	<article data-markdown>
+	  ### Montage vidéo
+	  * Mise en scène partielle (flou, contraste)
+	  * Améliorations (luminosité, couleurs)
+	  * Effets spéciaux
+	  * Mise en scène 3D
+	  * Effets de transition
+	  * Présentations vidéos par mixage webcam/images/texte
+	</article>
+
+	<article data-markdown>
+	  ## Développement avec webrtc
+	</article>
+
+	<article data-markdown>
+	  ### Récupérer l'image webcam
+&lt;video id="ma_video" height='600' width='600' autoplay&gt;
+	    
+	  ```
+var get_webcam=function() {
+  var got_stream=function(stream) {
+    video.src = webkitURL.createObjectURL(stream);
+  }
+  var no_stream=function() {
+    alert("Erreur");
+  }
+  var video=document.getElementById("ma_video");
+  navigator.webkitGetUserMedia('video', got_stream, no_stream);
+}
+	```
+#### C'est réellement simple ! ####
+	</article>
+
+	<article data-markdown>
+	  ### Envoyer l'image webcam
+	  * C'est plus compliqué
+	  * Gestion des parties, des problèmes réseau...
+	  * Quickstart : S'inspirer des démos de webrtc.org
+	  * Des librairies viendront !
+	</article>
+
+    
+
+	<article data-markdown>
+	    ### Compatibilité
+	    * Chrome
+	    * Firefox
+	    * Internet Explorer
+
+	    <br />    
+
+	    ### Disponible mais pas encore mature
+	    * Draft non finalisé
+	    * Prêt pour 2013
+	</article>
+
+	<article data-markdown>
+		# Voilà pour webrtc
+		
+		### Questions ?
+	</article>
+	
+
+
+<!-- ****************************************************************************
+		3/ webaudio
+********************************************************************************* -->
+	<article data-markdown>
+	  ##Webaudio
+	</article>
+  
+
+	<article data-markdown>
+	  <img style="width: 100%" src='base4.png'/>
+	</article>
+
+	<article data-markdown>
+	### L'élément AUDIO d'HTML5
+	* Simple d'utilisation
+	* Contrôle du volume, arrêt/pause
+	* Il manque des fonctions de synchronisation
+	* Mixage, Filtrage, autres traitements absents
+
+	#### solution : webaudio API ####
+	</article>
+
+	<article data-markdown>
+	### Webaudio API
+	* basé sur OpenAL
+	* créé pour les jeux
+	* l'élément AUDIO peut servir de source
+
+	Création du contexte :
+	```
+	var context = new webkitAudioContext();
+	```
+	</article>
+
+
+	<article data-markdown>
+	## Principe
+	</article>
+
+	<article data-markdown>
+	### Traitement audio
+	* Des sources
+	* Une route passant par des noeuds
+	* Une destination
+	<img src='webaudio0.png'/>
+	</article>
+
+	<article data-markdown>
+	### Les noeuds
+	* Contituent les routes
+	* Filtres, volume, 
+	* La route dépend de l'utilisation
+	* Utiliser une route type
+	</article>
+
+	<article data-markdown>
+	 <img src='webaudio1.png' />
+	</article>
+
+	<article data-markdown>
+	### Applications
+	* Réalisme sonore dans les jeux/applications interactives
+	* Musique en ligne : visualiseurs 
+	* Synthétiseurs en applications web
+	</article>
+
+	<article data-markdown>
+	### Synergies
+	#### Avec webgl : ajoute au son ce que webgl ajoute au graphisme ###
+	  * Son 3D
+	  * Effets : doppler, panning, ...
+
+	#### Avec webrtc : traitement sonore ###
+	</article>
+
+	<article data-markdown>
+	### Quickstart
+	* Moins complexe que webgl
+	* Une librairie existe pour three.js : tQuery webaudio
+
+	 [Démonstration tQuery](http://bit.ly/GApgWg)
+	</article>
+
+	<article data-markdown>
+	### Compatibilité
+	* Chrome
+	* Safari nighties
+	* Firefox : Audio data API
+	* Internet Explorer 10
+	</article>
+
+	<article data-markdown>
+		# Voilà pour webaudio
+		
+		### Questions ?
+	</article>
+	
+
+<!-- ****************************************************************************
+		4/ gamepad API
+********************************************************************************* -->
+	<article data-markdown>
+	    ##Gamepad API
+	</article>
+  
+	<article data-markdown>
+	  <img style="width: 100%" src='base5.png'/>
+	</article>
+
+	<article data-markdown>
+	  ### Présentation ###
+	  * Pour les jeux
+	  * Mais pas que pour les jeux !
+	  * Les simulateurs
+	  * La commande à distance
+
+	  #### En général : Navigation 3D plus intuitive
+	  <img src='F16_cockpit.jpg' />
+	</article>	
+
+	<article data-markdown>
+	### Au niveau technique
+	Nouveaux évènements javascript
+
+	```
+function connect_gamepad(e) {
+    alert("gamepad connectée :)");
+}
+window.addEventListener("MozGamepadConnected",
+	  gamepadConnected, false);
+	```
+
+déconnection : ```MozGamepadDisconnected```
+	</article>
+    
+	<article data-markdown>
+	### Les boutons
+
+	```
+function button_handler(event, pressed) {
+    var gamepadId = event.gamepad.id,
+    bouton = event.button,
+    alert("gamepad : "+gamepadId+" ; bouton : "+bouton
+      +" ; pressé: "+pressed);
+}
+	```
+	```
+window.addEventListener("MozGamepadButtonDown",
+	  function(e) { button_handler(e, true); }, false);
+window.addEventListener("MozGamepadButtonUp",
+	  function(e) { button_handler(e, false); }, false);
+	```
+
+    </article>
+
+	<article data-markdown>
+	### Les axes
+
+	```
+function axis_handler(event, pressed) {
+  var gamepadId = event.gamepad.id,
+    axis = event.axis,
+    value = event.value;
+    alert("gamepad : "+gamepadId+" ; axe : "+axis+" ; valeur : "+value);
+}
+	```
+	```
+window.addEventListener("MozGamepadAxisMove", axis_handler, false);
+	```
+      </article>
+
+      <article data-markdown>
+      ### C'est très simple !
+      #### En quelques heure rajoutez le support gamepad à vos jeux ####
+      </article>
+
+	<article data-markdown>
+	### Compatibilité
+	* Firefox
+	* Chrome
+	* Safari
+	* Opera
+	* Internet Explorer ?
+	</article>
+
+	<article data-markdown>
+		# Voilà pour gamepad API
+		
+		### Questions ?
+	</article>
+	
+
+
+<!-- ****************************************************************************
+		5/ DepthJS
+********************************************************************************* -->
+	<article data-markdown>
+	    ##DepthJS
+	</article>
+  
+	<article data-markdown>
+	  <img style="width: 100%" src='base.png'/>
+	</article>
+
+	<article data-markdown>
+	###Présentation
+	* C'est la seule qui nécessite un plugin
+	* Pour des applications spécifiques (vitrines, publicité)
+	* Nécessite une ergonomie très particulière
+	<img style='float: right'  src='minority-report.jpg'/>
+	</article>
+
+
+	<article data-markdown>
+	### Applications
+	* Peu pour le web "grand public"
+	* Bornes interactives
+	* Publicité
+	* Vitrines
+	* Applications spécifiques
+	</article>
+
+	<article data-markdown>
+	### Au niveau technique
+
+	#### N'utilise pas les events
+	```
+    DepthJS = {
+      onKinectInit: function() { },
+      onRegister: function(x, y, z, data) { },
+      onUnregister: function() { },
+      onMove: function(x, y, z) { },
+      onSwipeLeft: function() { },
+      onSwipeRight: function() { },
+      onSwipeDown: function() { },
+      onSwipeUp: function() { },
+      onPush: function() { },
+      onPull: function() { }
+    };
+	```
+	</article>
+
+	<article data-markdown>
+	### Compatibilité
+	* Chrome
+	* Firefox
+	* Safari
+	</article>
+
+
+	<article data-markdown>
+		# Voilà pour depthJS
+		
+		### Questions ?
+	</article>
+	
+<!-- ****************************************************************************
+		6/ Autres technologies
+********************************************************************************* -->
+	<article data-markdown>
+	    ##Autres nouveautés
+	    #### But : tout développer en application web
+	</article>
+
+	<article data-markdown>
+	 ### Mouse lock
+ 	<img src='mouselock.jpg' style='width: 100%; margin-left: auto; margin-right: auto'/>
+	</article>
+
+	<article data-markdown>
+	###Localstorage	
+  * Remplace les cookies
+  * Permet de stocker de grosses quantités de données
+  * Déjà prêt !
+<img src='hdd.jpg' style='float: right'/>
+``` localStorage['maCle']=valeur ```
+	</article>
+
+	<article data-markdown>
+	 ### CSS
+ 	* filtres
+ 	* Effets 3D
+ 	* Mais limités
+ 	* CSS shaders
+	</article>
+
+	<article data-markdown>
+	### Websockets
+	* Communication en temps réel avec le serveur
+	* Plus mature que webrtc
+	* Nécessite un serveur compatible
+	* Applications : jeux, remplacement d'AJAX
+	</article>
+
+	<article data-markdown>
+	# Voilà pour les présentations
+	#### Beaucoup de possibilités ... ####
+	#### Comment les utiliser dans le cadre de projets complets ? ####
+	#### Let's think ... ####
+	</article>
+
+
+	<script>
+
+	// ==UserScript==
+	// @name Use Markdown, sometimes, in your HTML.
+	// @author Paul Irish <http://paulirish.com/>
+	// @link http://git.io/data-markdown
+	// @match *
+	// ==/UserScript==
+	
+	
+	// If you're not using this as a userscript just delete from this line up. It's cool, homey.
+	
+	(function markdownSlideToHtml(){
+	  
+		if (!window.Showdown){
+			var scr		= document.createElement('script');
+			scr.onload	= markdownSlideToHtml;
+			scr.src		= 'https://raw.github.com/github/github-flavored-markdown/gh-pages/scripts/showdown.js';
+			document.body.appendChild(scr);
+			return;
+		}
+	
+		[].forEach.call(document.querySelectorAll('[data-markdown]'), function fn(elem){
+			// strip leading whitespace so it isn't evaluated as code
+			//var text      = elem.textContent.replace(/\n\s*\n/g,'\n');
+			// jerome- to have better support of html within markdown
+			var text      = elem.innerHTML;
+			//console.log("origin innerHTML", text.split('\n'));
+			// remove all blanks lines
+			//text		= text.replace(/\n\s*\n/g,'\n');
+			//console.log("step text", text)
+			// set indentation level so your markdown can be indented within your HTML
+			var matches	= text.match(/^\n([ \t]*)/);
+			var leadingws	= matches[1].length;
+			//console.log("first line", matches)
+			//console.log("leadingws", leadingws)
+			var regex	= new RegExp('\\n[ \\t]{' + leadingws + '}','g');
+			var md		= text.replace(regex,'\n');
+			console.log("pre md", md);
+			html      = (new Showdown.converter()).makeHtml(md);
+			console.log("post html", html);
+	
+			// to support prettyprint
+			html		= html.replace(/<code><br \/>/g,'<pre class="prettyprint">');
+			html		= html.replace(/<br \/><\/code>/g,'</pre>');
+			// unescape [><]
+			html		= html.replace(/&amp;gt;/g,'>');
+			html		= html.replace(/&amp;lt;/g,'<');
+			//console.log("escaped html", html);
+		  
+			// here, have sum HTML
+			elem.innerHTML = html;
+		});
+		// callback prettyprint to highlight code found in markdown
+		prettyPrint();
+	}());
+
+//* http://jsclassroom.com
+//* http://jscoaches.com
+//* http://html5coaches.com
+//* http://jsuni.com
+//* http://javascriptuni.com
+//
+//prefix: js html5 javascript
+//
+//suffix: school classroom univesity academy class education 
+//
+//
+//* https://github.com/hakimel/reveal.js/issues/15 reveal.js in markdown
+//  * do the same for html5slide
+//  * standalone, no compilation, no need to commit all to markdown
+//* https://github.com/vinyll/html5-slides-markdown does well but not proper target
+//  * nice on how to make slides in markdown tho
+	</script> 
+</body>
+</html>
